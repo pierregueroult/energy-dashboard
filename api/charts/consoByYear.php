@@ -24,7 +24,7 @@ if (!in_array($department, getAllKeysFromArray(DEPARTMENTS))) {
 require '../../src/constants/database.secret.php';
 require '../../src/utils/database.php';
 
-$query = 'SELECT `Année`, SUM(`Consommation totale (MWh)`), SUM(`Consommation Agriculture (MWh)`), SUM(`Consommation Industrie (MWh)`), SUM(`Consommation Tertiaire (MWh)`), SUM(`Consommation Résidentiel (MWh)`), SUM(`Consommation Secteur Inconnu (MWh)`) FROM ' . $department . ' GROUP BY `Année` ORDER BY `Année` ASC;';
+$query = 'SELECT `Année`, SUM(`Consommation totale (MWh)`), SUM(`Consommation Agriculture (MWh)`), SUM(`Consommation Industrie (MWh)`), SUM(`Consommation Tertiaire (MWh)`), SUM(`Consommation Résidentiel (MWh)`), SUM(`Consommation Secteur Inconnu (MWh)`) FROM ' . PREFIX . $department . ' GROUP BY `Année` ORDER BY `Année` ASC;';
 
 $result = $pdo->query($query);
 

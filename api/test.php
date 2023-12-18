@@ -24,7 +24,7 @@ if (!in_array($department, getAllKeysFromArray(DEPARTMENTS))) {
 require '../src/constants/database.secret.php';
 require '../src/utils/database.php';
 
-$query = "SELECT * FROM $department;";
+$query = 'SELECT * FROM ' . PREFIX . $department . ';';
 
 $result = $pdo->query($query);
 

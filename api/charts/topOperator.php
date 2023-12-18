@@ -42,7 +42,7 @@ if (!in_array($year, YEARS)) {
 require '../../src/constants/database.secret.php';
 require '../../src/utils/database.php';
 
-$query = 'SELECT DISTINCT `Opérateur`, `Consommation totale (MWh)` as "Somme Conso" FROM `' . $department . '` WHERE `Année` = ' . $year . ' ORDER BY `Consommation totale (MWh)` DESC;';
+$query = 'SELECT DISTINCT `Opérateur`, `Consommation totale (MWh)` as "Somme Conso" FROM `' . PREFIX . $department . '` WHERE `Année` = ' . $year . ' ORDER BY `Consommation totale (MWh)` DESC;';
 
 $result = $pdo->query($query);
 

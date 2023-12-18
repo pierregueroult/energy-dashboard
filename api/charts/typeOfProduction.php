@@ -26,7 +26,7 @@ $region = DEPARTMENTS[$department]['region'];
 require '../../src/constants/database.secret.php';
 require '../../src/utils/database.php';
 
-$query = 'SELECT SUM(`Thermique (MW)`) as `Thermique`,SUM(`Nucléaire (MW)`) as `Nucléaire`,SUM(`Eolien (MW)`) as `Éolien`,SUM(`Solaire (MW)`) as `Solaire`,SUM(`Hydraulique (MW)`) as `Hydraulique`,SUM(`Bioénergies (MW)`) as `Bioénergies`,SUM(`Ech. physiques (MW)`) as `Ech. Physiques` FROM ' . $region . " WHERE `Date` LIKE '2021%';";
+$query = 'SELECT SUM(`Thermique (MW)`) as `Thermique`,SUM(`Nucléaire (MW)`) as `Nucléaire`,SUM(`Eolien (MW)`) as `Éolien`,SUM(`Solaire (MW)`) as `Solaire`,SUM(`Hydraulique (MW)`) as `Hydraulique`,SUM(`Bioénergies (MW)`) as `Bioénergies`,SUM(`Ech. physiques (MW)`) as `Ech. Physiques` FROM ' . PREFIX . $region . " WHERE `Date` LIKE '2021%';";
 
 $result = $pdo->query($query);
 

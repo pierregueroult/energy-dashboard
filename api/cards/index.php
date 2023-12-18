@@ -38,12 +38,12 @@ if (!isset($_GET['index'], $_GET['department'])) {
     require '../../src/utils/database.php';
 
     if ($index == 1) {
-        $query = 'SELECT SUM(`Consommation totale (MWh)`) as consoThisYear FROM ' . $department . ' WHERE `Année` = 2021;';
+        $query = 'SELECT SUM(`Consommation totale (MWh)`) as consoThisYear FROM ' . PREFIX . $department . ' WHERE `Année` = 2021;';
         $result = $pdo->query($query);
 
         $consoThisYear = $result->fetch(PDO::FETCH_ASSOC);
 
-        $query = 'SELECT SUM(`Consommation totale (MWh)`) as consoLastYear FROM ' . $department . ' WHERE `Année` = 2020;';
+        $query = 'SELECT SUM(`Consommation totale (MWh)`) as consoLastYear FROM ' . PREFIX . $department . ' WHERE `Année` = 2020;';
         $result = $pdo->query($query);
 
         $consoLastYear = $result->fetch(PDO::FETCH_ASSOC);
@@ -61,12 +61,12 @@ if (!isset($_GET['index'], $_GET['department'])) {
     }
 
     if ($index == 4) {
-        $query = 'SELECT SUM(`Eolien (MW)` + `Solaire (MW)` + `Hydraulique (MW)` + `Bioénergies (MW)`) / SUM(`Thermique (MW)` + `Nucléaire (MW)` + `Eolien (MW)` + `Solaire (MW)` + `Hydraulique (MW)` + `Bioénergies (MW)`) * 100 AS PERCENT FROM ' . DEPARTMENTS[$department]['region'] . " WHERE `Date`LIKE '2021%';";
+        $query = 'SELECT SUM(`Eolien (MW)` + `Solaire (MW)` + `Hydraulique (MW)` + `Bioénergies (MW)`) / SUM(`Thermique (MW)` + `Nucléaire (MW)` + `Eolien (MW)` + `Solaire (MW)` + `Hydraulique (MW)` + `Bioénergies (MW)`) * 100 AS PERCENT FROM ' . PREFIX . DEPARTMENTS[$department]['region'] . " WHERE `Date`LIKE '2021%';";
         $result = $pdo->query($query);
 
         $dataLastYear = $result->fetch(PDO::FETCH_ASSOC);
 
-        $query = 'SELECT SUM(`Eolien (MW)` + `Solaire (MW)` + `Hydraulique (MW)` + `Bioénergies (MW)`) / SUM(`Thermique (MW)` + `Nucléaire (MW)` + `Eolien (MW)` + `Solaire (MW)` + `Hydraulique (MW)` + `Bioénergies (MW)`) * 100 AS PERCENT FROM ' . DEPARTMENTS[$department]['region'] . " WHERE `Date`LIKE '2022%';";
+        $query = 'SELECT SUM(`Eolien (MW)` + `Solaire (MW)` + `Hydraulique (MW)` + `Bioénergies (MW)`) / SUM(`Thermique (MW)` + `Nucléaire (MW)` + `Eolien (MW)` + `Solaire (MW)` + `Hydraulique (MW)` + `Bioénergies (MW)`) * 100 AS PERCENT FROM ' . PREFIX . DEPARTMENTS[$department]['region'] . " WHERE `Date`LIKE '2022%';";
 
         $result = $pdo->query($query);
 
@@ -85,13 +85,13 @@ if (!isset($_GET['index'], $_GET['department'])) {
     }
 
     if ($index == 2) {
-        $query = 'SELECT `Année`, SUM(`Nombre de points Agriculture`) + SUM(`Nombre de points Industrie`) + SUM(`Nombre de points Tertiaire`) + SUM(`Nombre de points Résidentiel`) + SUM(`Nombre de points Secteur Inconnu`) as "Points" FROM `' . $department . '` WHERE `Année` = 2021 GROUP BY `Année`;';
+        $query = 'SELECT `Année`, SUM(`Nombre de points Agriculture`) + SUM(`Nombre de points Industrie`) + SUM(`Nombre de points Tertiaire`) + SUM(`Nombre de points Résidentiel`) + SUM(`Nombre de points Secteur Inconnu`) as "Points" FROM `' . PREFIX . $department . '` WHERE `Année` = 2021 GROUP BY `Année`;';
 
         $result = $pdo->query($query);
 
         $dataThisYear = $result->fetch(PDO::FETCH_ASSOC);
 
-        $query = 'SELECT `Année`, SUM(`Nombre de points Agriculture`) + SUM(`Nombre de points Industrie`) + SUM(`Nombre de points Tertiaire`) + SUM(`Nombre de points Résidentiel`) + SUM(`Nombre de points Secteur Inconnu`) as "Points" FROM `' . $department . '` WHERE `Année` = 2020 GROUP BY `Année`;';
+        $query = 'SELECT `Année`, SUM(`Nombre de points Agriculture`) + SUM(`Nombre de points Industrie`) + SUM(`Nombre de points Tertiaire`) + SUM(`Nombre de points Résidentiel`) + SUM(`Nombre de points Secteur Inconnu`) as "Points" FROM `' . PREFIX . $department . '` WHERE `Année` = 2020 GROUP BY `Année`;';
 
         $result = $pdo->query($query);
 
@@ -110,11 +110,11 @@ if (!isset($_GET['index'], $_GET['department'])) {
     }
 
     if ($index == 3) {
-        $query = 'SELECT `Année`, SUM(`Nombre de mailles secretisées (agriculture)`) + SUM(`Nombre de mailles secretisées (industrie)`) + SUM(`Nombre de mailles secretisées (tertiaire)`) + SUM(`Nombre de mailles secretisées (résidentiel)`) + SUM(`Nombre de mailles secretisées (secteur inconnu)`) as "Mailles" FROM `' . $department . '` WHERE `Année` = 2021 GROUP BY `Année`;';
+        $query = 'SELECT `Année`, SUM(`Nombre de mailles secretisées (agriculture)`) + SUM(`Nombre de mailles secretisées (industrie)`) + SUM(`Nombre de mailles secretisées (tertiaire)`) + SUM(`Nombre de mailles secretisées (résidentiel)`) + SUM(`Nombre de mailles secretisées (secteur inconnu)`) as "Mailles" FROM `' . PREFIX . $department . '` WHERE `Année` = 2021 GROUP BY `Année`;';
         $result = $pdo->query($query);
         $dataThisYear = $result->fetch(PDO::FETCH_ASSOC);
 
-        $query = 'SELECT `Année`, SUM(`Nombre de mailles secretisées (agriculture)`) + SUM(`Nombre de mailles secretisées (industrie)`) + SUM(`Nombre de mailles secretisées (tertiaire)`) + SUM(`Nombre de mailles secretisées (résidentiel)`) + SUM(`Nombre de mailles secretisées (secteur inconnu)`) as "Mailles" FROM `' . $department . '` WHERE `Année` = 2020 GROUP BY `Année`;';
+        $query = 'SELECT `Année`, SUM(`Nombre de mailles secretisées (agriculture)`) + SUM(`Nombre de mailles secretisées (industrie)`) + SUM(`Nombre de mailles secretisées (tertiaire)`) + SUM(`Nombre de mailles secretisées (résidentiel)`) + SUM(`Nombre de mailles secretisées (secteur inconnu)`) as "Mailles" FROM `' . PREFIX . $department . '` WHERE `Année` = 2020 GROUP BY `Année`;';
 
         $result = $pdo->query($query);
 

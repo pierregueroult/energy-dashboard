@@ -42,7 +42,7 @@ if (!in_array($year, YEARS)) {
 require '../../src/constants/database.secret.php';
 require '../../src/utils/database.php';
 
-$query = 'SELECT SUM(`Consommation Agriculture (MWh)`) as "C. Agricole", SUM(`Nombre de points Agriculture`) as "P. Agricole", SUM(`Consommation Industrie (MWh)`) as "C. Industrie", SUM(`Nombre de points Industrie`) as "P. Industrie", SUM(`Consommation Tertiaire (MWh)`) as "C. Tertiaire", SUM(`Nombre de points Tertiaire`) as "P. Tertiaire", SUM(`Consommation Résidentiel (MWh)`) as "C. Résidentiel", SUM(`Nombre de points Résidentiel`) as "P. Résidentiel", SUM(`Consommation Secteur Inconnu (MWh)`) as "C. Inconnue", SUM(`Nombre de points Secteur Inconnu`) as "P. Inconnu" FROM `' . $department . '` WHERE `Année` = ' . $year . ' GROUP BY `Année`;';
+$query = 'SELECT SUM(`Consommation Agriculture (MWh)`) as "C. Agricole", SUM(`Nombre de points Agriculture`) as "P. Agricole", SUM(`Consommation Industrie (MWh)`) as "C. Industrie", SUM(`Nombre de points Industrie`) as "P. Industrie", SUM(`Consommation Tertiaire (MWh)`) as "C. Tertiaire", SUM(`Nombre de points Tertiaire`) as "P. Tertiaire", SUM(`Consommation Résidentiel (MWh)`) as "C. Résidentiel", SUM(`Nombre de points Résidentiel`) as "P. Résidentiel", SUM(`Consommation Secteur Inconnu (MWh)`) as "C. Inconnue", SUM(`Nombre de points Secteur Inconnu`) as "P. Inconnu" FROM `' . PREFIX . $department . '` WHERE `Année` = ' . $year . ' GROUP BY `Année`;';
 
 $result = $pdo->query($query);
 

@@ -27,7 +27,7 @@ require '../../src/constants/database.secret.php';
 require '../../src/utils/database.php';
 
 $query = "SELECT MONTH(`Date`) as 'Mois', SUM(`Consommation (MW)`) as 'Consommation',
-(SUM(`Thermique (MW)`) + SUM(`Nucléaire (MW)`) + SUM(`Eolien (MW)`) + SUM(`Solaire (MW)`) + SUM(`Hydraulique (MW)`) + SUM(`Bioénergies (MW)`) + SUM(`Ech. physiques (MW)`)) as 'Production' FROM `" . $region . "` WHERE `Date` LIKE '2021%' GROUP BY MONTH(`Date`);";
+(SUM(`Thermique (MW)`) + SUM(`Nucléaire (MW)`) + SUM(`Eolien (MW)`) + SUM(`Solaire (MW)`) + SUM(`Hydraulique (MW)`) + SUM(`Bioénergies (MW)`) + SUM(`Ech. physiques (MW)`)) as 'Production' FROM `" . PREFIX . $region . "` WHERE `Date` LIKE '2021%' GROUP BY MONTH(`Date`);";
 
 $result = $pdo->query($query);
 
