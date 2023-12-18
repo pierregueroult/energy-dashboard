@@ -6,7 +6,7 @@ Bonjour, bienvenue dans ce fichier readme. Je vais préciser toutes les informat
 
 - On note d'abord la présence du `package.json`, il sert uniquement lors du développement pour lancer le watcher de `tailwindcss` et `postcss`. Il n'est pas nécessaire de l'utiliser pour lancer ou déploier le projet.
 - Le projet sera déployé sur le serveur de l'université, retrouvable à l'adresse suivante : [https://gueropie.tpweb.univ-rouen.fr/sae303/](https://gueropie.tpweb.univ-rouen.fr/sae303/).
-- Il est aussi prévu que je déploie ce projet sur un serveur personnel, relié à mon nom de domaine : [https://pierregueroult.dev]. Je mettrais à jour le readme du repository lorsque ce sera fait.
+- Il est aussi prévu que je déploie ce projet sur un serveur personnel, relié à mon nom de domaine : [https://pierregueroult.dev](ici). Je mettrais à jour le readme du repository lorsque ce sera fait.
 - Il est de même possible de retrouver mon projet sur mon github : [https://github.com/pierregueroult/energy-dashboard](https://github.com/pierregueroult/energy-dashboard)
 - Pour un déploiement local, il est possible de cloner le repository ou de récupérer le code auprès de moi. Sans oublier d'installer la base de données correspondente dans le fichier "sae303_lite.sql" à installer dans la base de données `sae303` de votre serveur MySQL.
 
