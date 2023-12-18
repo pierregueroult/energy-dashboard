@@ -38,12 +38,12 @@ if (!isset($_GET['index'], $_GET['department'])) {
     require '../../src/utils/database.php';
 
     if ($index == 1) {
-        $query = 'SELECT SUM(`Consommation totale (MWh)`) as consoThisYear FROM ' . PREFIX . $department . ' WHERE `Année` = 2021;';
+        $query = 'SELECT SUM(`Consommation totale (MWh)`) as consoThisYear FROM `' . PREFIX . $department . '` WHERE `Année` = 2021;';
         $result = $pdo->query($query);
 
         $consoThisYear = $result->fetch(PDO::FETCH_ASSOC);
 
-        $query = 'SELECT SUM(`Consommation totale (MWh)`) as consoLastYear FROM ' . PREFIX . $department . ' WHERE `Année` = 2020;';
+        $query = 'SELECT SUM(`Consommation totale (MWh)`) as consoLastYear FROM `' . PREFIX . $department . '` WHERE `Année` = 2020;';
         $result = $pdo->query($query);
 
         $consoLastYear = $result->fetch(PDO::FETCH_ASSOC);
@@ -61,12 +61,12 @@ if (!isset($_GET['index'], $_GET['department'])) {
     }
 
     if ($index == 4) {
-        $query = 'SELECT SUM(`Eolien (MW)` + `Solaire (MW)` + `Hydraulique (MW)` + `Bioénergies (MW)`) / SUM(`Thermique (MW)` + `Nucléaire (MW)` + `Eolien (MW)` + `Solaire (MW)` + `Hydraulique (MW)` + `Bioénergies (MW)`) * 100 AS PERCENT FROM ' . PREFIX . DEPARTMENTS[$department]['region'] . " WHERE `Date`LIKE '2021%';";
+        $query = 'SELECT SUM(`Eolien (MW)` + `Solaire (MW)` + `Hydraulique (MW)` + `Bioénergies (MW)`) / SUM(`Thermique (MW)` + `Nucléaire (MW)` + `Eolien (MW)` + `Solaire (MW)` + `Hydraulique (MW)` + `Bioénergies (MW)`) * 100 AS PERCENT FROM `' . PREFIX . DEPARTMENTS[$department]['region'] . "` WHERE `Date`LIKE '2021%';";
         $result = $pdo->query($query);
 
         $dataLastYear = $result->fetch(PDO::FETCH_ASSOC);
 
-        $query = 'SELECT SUM(`Eolien (MW)` + `Solaire (MW)` + `Hydraulique (MW)` + `Bioénergies (MW)`) / SUM(`Thermique (MW)` + `Nucléaire (MW)` + `Eolien (MW)` + `Solaire (MW)` + `Hydraulique (MW)` + `Bioénergies (MW)`) * 100 AS PERCENT FROM ' . PREFIX . DEPARTMENTS[$department]['region'] . " WHERE `Date`LIKE '2022%';";
+        $query = 'SELECT SUM(`Eolien (MW)` + `Solaire (MW)` + `Hydraulique (MW)` + `Bioénergies (MW)`) / SUM(`Thermique (MW)` + `Nucléaire (MW)` + `Eolien (MW)` + `Solaire (MW)` + `Hydraulique (MW)` + `Bioénergies (MW)`) * 100 AS PERCENT FROM `' . PREFIX . DEPARTMENTS[$department]['region'] . "` WHERE `Date`LIKE '2022%';";
 
         $result = $pdo->query($query);
 

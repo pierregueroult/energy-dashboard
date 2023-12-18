@@ -60,6 +60,13 @@ async function loadCharts(department) {
 
     const { data } = await res.json();
 
+    aside.classList.remove(
+      "positive",
+      "negative",
+      "text-green-500",
+      "text-red-500",
+    );
+
     // insert the data
     legend.innerText = data.legend;
     value.innerText = Math.round(data.info) + " " + data.unit;
@@ -70,12 +77,10 @@ async function loadCharts(department) {
     aside.classList.add(data.ratio > 0 ? "text-green-500" : "text-red-500");
 
     // toggle the visibility
-    setTimeout(() => {
-      legend.classList.remove("-translate-y-2", "opacity-0");
-      value.classList.remove("translate-y-2", "opacity-0");
-      ratio.classList.remove("translate-y-2", "opacity-0");
-      svg.forEach((s) => s.classList.remove("-translate-y-2", "opacity-0"));
-    }, 80 * i);
+    legend.classList.remove("-translate-y-2", "opacity-0");
+    value.classList.remove("translate-y-2", "opacity-0");
+    ratio.classList.remove("translate-y-2", "opacity-0");
+    svg.forEach((s) => s.classList.remove("-translate-y-2", "opacity-0"));
   });
   // load charts
 
@@ -243,7 +248,7 @@ async function triggerConsoByYear(e) {
   const res = await fetch(
     "/sae303/api/charts/consoByYear.php?department=" + department,
   );
-  const { data } = await res.json();
+  var { data } = await res.json();
 
   let canva = document.getElementById("consoByYear");
 
@@ -256,13 +261,23 @@ async function triggerConsoByYear(e) {
   newCanva.id = "consoByYear";
   container.appendChild(newCanva);
 
+  const formatedData = data.map((d) => ({
+    ...d,
+    "SUM(`Consommation Tertiaire (MWh)`)":
+      d["SUM(`Consommation Tertiaire  (MWh)`)"],
+    "SUM(`Consommation Résidentiel (MWh)`)":
+      d["SUM(`Consommation Résidentiel  (MWh)`)"],
+  }));
+
+  console.log(formatedData);
+
   new Chart(newCanva, {
     type: "line",
     data: {
       labels: data.map((d) => d["Année"]),
       datasets: datalist.map((list) => ({
         label: list[0] + " (MWh)",
-        data: data.map((d) => d["SUM(`" + list[0].trim() + " (MWh)`)"]),
+        data: formatedData.map((d) => d["SUM(`" + list[0] + " (MWh)`)"]),
         borderColor: list[1],
         pointBackgroundColor: list[1],
         borderWidth: 3,

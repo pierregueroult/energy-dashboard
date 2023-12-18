@@ -56,6 +56,11 @@ if (!$result) {
 
 $data = $result->fetchAll(PDO::FETCH_ASSOC);
 
+// round the consumption
+foreach ($data as $key => $value) {
+    $data[$key]['Somme Conso'] = round($value['Somme Conso']);
+}
+
 echo json_encode(array(
     'status' => true,
     'data' => $data
