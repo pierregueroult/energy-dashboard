@@ -1,0 +1,52 @@
+:root {
+  --background: 0 0% 96%;
+  --border: 0 0% 89.9%;
+  --text: 0 0% 0%;
+  --primary: 48 100% 67%;
+}
+
+.dark {
+  --background: 0 0% 3.9%;
+  --border: 0 0% 14.9%;
+  --text: 0 0% 95%;
+  /* --primary: 48 100% 67%; */
+}
+
+#dark-mode-button .sun {
+  opacity: 1;
+}
+
+#dark-mode-button .moon {
+  opacity: 0;
+}
+
+#dark-mode-button.light-button .sun {
+  opacity: 0;
+}
+
+#dark-mode-button.light-button .moon {
+  opacity: 1;
+}
+
+/* hover:svg-child-black */
+/* svg child is swap to black */
+
+.hover\:svg-child-black:hover svg {
+  color: black !important;
+}
+
+.positive svg:nth-child(2) {
+  display: none !important;
+}
+
+.negative svg:nth-child(1) {
+  display: none !important;
+}
+
+.child-hidden * {
+  opacity: 0;
+}
+
+button.bg-black {
+  text-decoration: underline solid var(--color) -1px;
+}

@@ -1,0 +1,12 @@
+
+# dependencies folders
+/node_modules/
+/composer/
+
+# apple and system files
+.DS_Store
+
+# debug
+npm-debug.log*
+
+*.secret.php
