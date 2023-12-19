@@ -26,7 +26,16 @@ require '../../src/utils/database.php';
 
 $query = 'SELECT `Année`, SUM(`Consommation totale (MWh)`), SUM(`Consommation Agriculture (MWh)`), SUM(`Consommation Industrie (MWh)`), SUM(`Consommation Tertiaire  (MWh)`), SUM(`Consommation Résidentiel  (MWh)`), SUM(`Consommation Secteur Inconnu (MWh)`) FROM `' . PREFIX . $department . '` GROUP BY `Année` ORDER BY `Année` ASC;';
 
-$result = $pdo->query($query);
+try {
+    $result = $pdo->query($query);
+} catch (PDOException $e) {
+
+    echo json_encode(array(
+        'status' => false,
+        'message' => 'Database query failed'
+    ));
+    exit;
+}
 
 if (!$result) {
     echo json_encode(array(
